@@ -1,0 +1,32 @@
+<div class="dashboard-container">
+    <mat-toolbar color="primary" class="toolbar">
+      <span>ABC Corporation Dashboard</span>
+    </mat-toolbar>
+  
+    <div class="dashboard-content">
+      <!-- Filters Section -->
+      <div class="filters">
+        <app-filters></app-filters>
+      </div>
+  
+      <!-- Metrics Section -->
+      <div class="widgets-grid">
+        <mat-card class="widget">
+          <app-sales-metrics></app-sales-metrics>
+        </mat-card>
+  
+        <mat-card class="widget">
+          <app-customer-insights></app-customer-insights>
+        </mat-card>
+  
+        <mat-card class="widget">
+          <app-revenue-analysis></app-revenue-analysis>
+        </mat-card>
+  
+        <mat-card class="widget">
+          <app-inventory-management></app-inventory-management>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  

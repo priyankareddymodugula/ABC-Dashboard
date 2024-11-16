@@ -1,0 +1,10 @@
+<div class="sales-metrics">
+    <h3>Sales Metrics</h3>
+    <canvas *ngIf="isBrowser" baseChart
+            [datasets]="salesChartData"
+            [labels]="salesChartLabels"
+            chartType="bar"
+            [options]="chartOptions">
+    </canvas>
+  </div>
+  
