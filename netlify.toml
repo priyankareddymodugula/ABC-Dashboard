@@ -9,7 +9,7 @@
 [functions]
   directory = "functions"
 [build]
-  command = "ng build --prod"
+  command = "ng build"
   publish = "dist/abc-dashboard/browser"
 
 [[plugins]]
