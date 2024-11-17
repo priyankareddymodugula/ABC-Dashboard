@@ -5,9 +5,19 @@
 
         <mat-card-content>
                 <div class="chart-container">
-                <canvas *ngIf="isBrowser" baseChart [datasets]="salesChartData" [labels]="salesChartLabels"
-                        chartType="bar" [options]="chartOptions">
-                </canvas>
+                        <ngx-charts-bar-vertical
+                        
+  [view]="[300,300]"
+                        [results]="salesChartData"
+                        [gradient]="gradient"
+                        [xAxis]="true"
+                        [yAxis]="true"
+                        [showXAxisLabel]="true"
+                        [showYAxisLabel]="true"
+                        [xAxisLabel]="'Month'"
+                        [yAxisLabel]="'Sales'"
+                       >
+                      </ngx-charts-bar-vertical>
                 </div>
         </mat-card-content>
 </mat-card>

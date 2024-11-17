@@ -4,14 +4,15 @@
     </mat-card-header>
     <mat-card-content>
       <div class="chart-container">
-        <canvas *ngIf="isBrowser" baseChart
-        width="400" height="400"
-          [datasets]="revenueChartData"
-          [labels]="revenueChartLabels"
-          [options]="lineChartOptions"
-          [legend]="lineChartLegend"
-          [type]="'line'">
-        </canvas>
+        <ngx-charts-line-chart
+  [view]="[300,300]"
+  [results]="revenueChartData"
+  [xAxis]="true"
+  [yAxis]="true"
+  [autoScale]="true"
+  [xAxisLabel]="'Date'"
+  [yAxisLabel]="'Revenue'">
+</ngx-charts-line-chart>
       </div>
     </mat-card-content>
   </mat-card>

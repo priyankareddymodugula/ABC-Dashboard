@@ -1,22 +1,13 @@
 import { Component, Input, OnInit, Renderer2 } from '@angular/core';
-import { BaseChartDirective } from 'ng2-charts';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import {
-  Chart,
-  BarController,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from 'chart.js';
-import { DashboardService } from '../../dashboard.service';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import {MatCardModule} from '@angular/material/card';
 
-Chart.register(BarController, BarElement, CategoryScale, LinearScale);
 @Component({
   selector: 'app-sales-metrics',
   standalone: true,
-  imports: [BaseChartDirective, CommonModule, MatCardModule],
+  imports: [NgxChartsModule, CommonModule, MatCardModule],
   templateUrl: './sales-metrics.component.html',
   styleUrl: './sales-metrics.component.scss'
 })
@@ -28,8 +19,12 @@ export class SalesMetricsComponent implements OnInit {
   salesChartData: any[] = [];
   salesChartLabels: string[] = [];
   chartOptions = {};
+
+  view: [number, number] = [700, 300];
+  gradient: boolean = false;
+  colorScheme = { domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'] };
   public isBrowser: boolean;
-  constructor(@Inject(PLATFORM_ID) platformId: Object, private renderer2: Renderer2,private dashboardService: DashboardService) {
+  constructor(@Inject(PLATFORM_ID) platformId: Object) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -37,26 +32,31 @@ export class SalesMetricsComponent implements OnInit {
   }
 
   initializeChartData(data:any[]) {
-    
-      this.salesChartLabels = data.map((item:any) => item.month);
-      this.salesChartData = [
-        {
-          data: data.map((item:any) => item.total),
-          label: 'Sales ($)',
-          backgroundColor: '#42A5F5',
-        },
-      ];
+    this.salesChartData = data.map((item:any) =>({
+      
+        name: item.month,
+        value: item.total,
+      
+    }));
+      // this.salesChartLabels = data?.map((item:any) => item.month);
+      // this.salesChartData = [
+      //   {
+      //     data: data?.map((item:any) => item.total),
+      //     label: 'Sales ($)',
+      //     backgroundColor: '#42A5F5',
+      //   },
+      // ];
 
-      this.chartOptions = {
-        responsive: true,
-        plugins: {
-          legend: { display: true, position: 'top' },
-        },
-        scales: {
-          x: { beginAtZero: true },
-          y: { beginAtZero: true },
-        },
-      };
+      // this.chartOptions = {
+      //   responsive: true,
+      //   plugins: {
+      //     legend: { display: true, position: 'top' },
+      //   },
+      //   scales: {
+      //     x: { beginAtZero: true },
+      //     y: { beginAtZero: true },
+      //   },
+      // };
 
   }
 }

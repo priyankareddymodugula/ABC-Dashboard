@@ -4,14 +4,12 @@
     </mat-card-header>
     <mat-card-content>
       <div class="chart-container">
-        <canvas *ngIf="isBrowser" baseChart
-          [datasets]="customerCounts"
-          [labels]="customerRegions"
-          [options]="pieChartOptions"
-          [plugins]="pieChartPlugins"
-          [legend]="pieChartLegend"
-          [type]="'pie'">
-        </canvas>
+        <ngx-charts-pie-chart
+         [view]="[300, 300]"
+  [results]="customerCounts"
+  [labels]="true"
+  [doughnut]="false">
+</ngx-charts-pie-chart>
       </div>
     </mat-card-content>
   </mat-card>
