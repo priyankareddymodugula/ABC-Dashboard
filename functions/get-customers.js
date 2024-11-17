@@ -5,7 +5,7 @@ exports.handler = async function(event, context) {
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Headers": "*",
       },
       body: "",
     };
@@ -19,7 +19,7 @@ exports.handler = async function(event, context) {
     const headers = {
       "Access-Control-Allow-Origin": "*", // Allows all origins
       "Access-Control-Allow-Methods": "GET, POST, OPTIONS", // Allowed methods
-      "Access-Control-Allow-Headers": "Content-Type", // Allowed headers
+      "Access-Control-Allow-Headers": "*", // Allowed headers
     };
   
     return {
