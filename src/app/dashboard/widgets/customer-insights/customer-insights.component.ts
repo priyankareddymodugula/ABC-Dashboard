@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { Component, Inject, Input, PLATFORM_ID, Renderer2 } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { DashboardService } from '../../dashboard.service';
 import { BaseChartDirective } from 'ng2-charts';
@@ -18,6 +18,10 @@ Chart.register(
   styleUrl: './customer-insights.component.scss'
 })
 export class CustomerInsightsComponent {
+  @Input() set data(values: any) {
+    if(values) this.initializeChartData(values);
+  }
+
   customerCounts: any = [];
   customerRegions: string[] = [];
   public isBrowser: boolean;
@@ -28,14 +32,12 @@ export class CustomerInsightsComponent {
     this.isBrowser = isPlatformBrowser(platformId);
   }
   ngOnInit(): void {
-    this.initializeChartData();
+   
   }
 
-  initializeChartData() {
-    // Mock data for sales
-    this.dashboardService.getCustomerInsights().subscribe((data) => {
+  initializeChartData(data: any) {
       this.customerCounts =[{
-        data: data.map(data => data.count),
+        data: data.map((item:any) => item.count),
         backgroundColor: [      
           'lightyellow',
           'red',
@@ -43,7 +45,7 @@ export class CustomerInsightsComponent {
           'lightblue'
           ]
       }]
-      this.customerRegions = data.map((item) => item.region);
+      this.customerRegions = data.map((item:any) => item.region);
       this.pieChartPlugins = [this.customerRegions]
       this.pieChartOptions = {
         responsive: true,
@@ -56,6 +58,5 @@ export class CustomerInsightsComponent {
               }
           },
       };
-    });
   }
 }

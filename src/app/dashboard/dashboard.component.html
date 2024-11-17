@@ -6,25 +6,25 @@
     <div class="dashboard-content">
       <!-- Filters Section -->
       <div class="filters">
-        <app-filters></app-filters>
+        <app-filters  (filterChanged)="onFilterChanged($event)" ></app-filters>
       </div>
   
       <!-- Metrics Section -->
       <div class="widgets-grid">
         
-          <app-sales-metrics></app-sales-metrics>
+          <app-sales-metrics [data]="filteredDataSales"></app-sales-metrics>
         
   
         
-          <app-customer-insights></app-customer-insights>
+          <app-customer-insights [data]="filteredDataCustomers"></app-customer-insights>
         
   
         
-          <app-revenue-analysis></app-revenue-analysis>
+          <app-revenue-analysis [data]="filteredDataRevenue"></app-revenue-analysis>
         
   
         
-          <app-inventory-management></app-inventory-management>
+          <app-inventory-management [data]="filteredDataInventory"></app-inventory-management>
         
       </div>
     </div>

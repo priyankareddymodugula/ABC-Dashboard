@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { Component, Inject, Input, PLATFORM_ID, Renderer2 } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { DashboardService } from '../../dashboard.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
@@ -21,6 +21,10 @@ Chart.register(
   styleUrl: './revenue-analysis.component.scss'
 })
 export class RevenueAnalysisComponent {
+
+  @Input() set data(values: any) {
+    if(values) this.initializeChartData(values);
+  }
   revenueChartData: any = [];
   revenueChartLabels: string[] = [];
   lineChartOptions = {};
@@ -30,24 +34,20 @@ export class RevenueAnalysisComponent {
     this.isBrowser = isPlatformBrowser(platformId);
   }
   ngOnInit(): void {
-    this.initializeChartData();
   }
 
-  initializeChartData() {
-    // Mock data for sales
-    this.dashboardService.getRevenueData().subscribe((data) => {
+  initializeChartData(data:any[]) {
       this.revenueChartData =[{
-        data: data.map(data => data.revenue),
+        data: data.map((data:any) => data.revenue),
         label: 'Daily Revenue',
         fill: true,
         tension: 0.5,
         borderColor: 'black',
         backgroundColor: 'rgba(255,0,0,0.3)'
       }]
-      this.revenueChartLabels = data.map((item) => item.date);
+      this.revenueChartLabels = data.map((item:any) => item.date);
       this.lineChartOptions = {
         responsive: true,
       };
-    });
   }
 }

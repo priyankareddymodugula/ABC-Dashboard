@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
@@ -22,6 +22,9 @@ Chart.register(BarController, BarElement, CategoryScale, LinearScale);
 })
 
 export class SalesMetricsComponent implements OnInit {
+  @Input() set data(values: any) {
+    if(values) this.initializeChartData(values);
+  }
   salesChartData: any[] = [];
   salesChartLabels: string[] = [];
   chartOptions = {};
@@ -31,16 +34,14 @@ export class SalesMetricsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initializeChartData();
   }
 
-  initializeChartData() {
-    // Mock data for sales
-    this.dashboardService.getSalesData().subscribe((data) => {
-      this.salesChartLabels = data.map((item) => item.month);
+  initializeChartData(data:any[]) {
+    
+      this.salesChartLabels = data.map((item:any) => item.month);
       this.salesChartData = [
         {
-          data: data.map((item) => item.total),
+          data: data.map((item:any) => item.total),
           label: 'Sales ($)',
           backgroundColor: '#42A5F5',
         },
@@ -56,6 +57,6 @@ export class SalesMetricsComponent implements OnInit {
           y: { beginAtZero: true },
         },
       };
-    });
+
   }
 }
