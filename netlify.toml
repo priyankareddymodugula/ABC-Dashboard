@@ -1,6 +1,4 @@
-[build]
-  publish = "dist"
-  command = "ng build --prod"
+
 
 [[redirects]]
   from = "/api/*"
@@ -10,3 +8,9 @@
 
 [functions]
   directory = "functions"
+[build]
+  command = "ng build --prod"
+  publish = "dist/abc-dashboard/browser"
+
+[[plugins]]
+  package = "@netlify/angular-runtime"
