@@ -1,4 +1,15 @@
 exports.handler = async function(event, context) {
+  if (event.httpMethod === "OPTIONS") {
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type",
+      },
+      body: "",
+    };
+  }
     const customersData = [
       { "region": "North", "count": 120 },
       { "region": "South", "count": 80 },
