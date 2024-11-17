@@ -10,12 +10,13 @@ import {
   LinearScale,
 } from 'chart.js';
 import { DashboardService } from '../../dashboard.service';
+import {MatCardModule} from '@angular/material/card';
 
 Chart.register(BarController, BarElement, CategoryScale, LinearScale);
 @Component({
   selector: 'app-sales-metrics',
   standalone: true,
-  imports: [BaseChartDirective, CommonModule],
+  imports: [BaseChartDirective, CommonModule, MatCardModule],
   templateUrl: './sales-metrics.component.html',
   styleUrl: './sales-metrics.component.scss'
 })

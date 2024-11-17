@@ -1,0 +1,21 @@
+.widget-card {
+    padding: 16px;
+  }
+  
+  .insights-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .insight-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .chart-container {
+    width: 100%;
+    height: 300px;
+  }
+  
