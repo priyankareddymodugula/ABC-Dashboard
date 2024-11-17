@@ -11,22 +11,22 @@ export class DashboardService {
   constructor(private http: HttpClient) {}
 
   // Fetch sales metrics data
-  getSalesData(): Observable<{ month: string; total: number }[]> {
-    return this.http.get<{ month: string; total: number }[]>(`${this.baseUrl}/get-sales`);
+  getSalesData(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/get-sales`);
   }
 
   // Fetch customer insights
-  getCustomerInsights(): Observable<{ region: string; count: number }[]> {
-    return this.http.get<{ region: string; count: number }[]>(`${this.baseUrl}/get-customers`);
+  getCustomerInsights(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/get-customers`);
   }
 
   // Fetch revenue data
-  getRevenueData(): Observable<{ date: string; revenue: number }[]> {
-    return this.http.get<{ date: string; revenue: number }[]>(`${this.baseUrl}/get-revenue`);
+  getRevenueData(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/get-revenue`);
   }
 
   // Fetch inventory management data
-  getInventoryData(): Observable<{ product: string; quantity: number; status: string }[]> {
-    return this.http.get<{ product: string; quantity: number; status: string }[]>(`${this.baseUrl}/get-inventory`);
+  getInventoryData(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/get-inventory`);
   }
 }

@@ -41,19 +41,19 @@ export class DashboardComponent {
   // Fetch data from the mock JSON server
   fetchData() {
     this.dashboard.getSalesData().subscribe((data)=>{
-      this.originalDataSales = data;
+      this.originalDataSales = data.sales;
       this.filteredDataSales = [...this.originalDataSales];
     });
     this.dashboard.getRevenueData().subscribe((data)=>{
-      this.originalDataRevenue = data;
+      this.originalDataRevenue = data.revenue;
       this.filteredDataRevenue = [...this.originalDataRevenue];
     });
     this.dashboard.getCustomerInsights().subscribe((data)=>{
-      this.originalDataCustomers = data;
+      this.originalDataCustomers = data.customers;
       this.filteredDataCustomers = [...this.originalDataCustomers];
     });
     this.dashboard.getInventoryData().subscribe((data)=>{
-      this.originalDataInventory = data;
+      this.originalDataInventory = data.inventory;
       this.filteredDataInventory = [...this.originalDataInventory];
     });
   }
