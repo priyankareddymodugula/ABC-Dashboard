@@ -40,22 +40,39 @@ export class DashboardComponent {
 
   // Fetch data from the mock JSON server
   fetchData() {
-    this.dashboard.getSalesData().subscribe((data)=>{
-      this.originalDataSales = data.sales;
+      this.originalDataSales = [
+        { "month": "January", "total": 5000 },
+        { "month": "February", "total": 7000 },
+        { "month": "March", "total": 8000 },
+        { "month": "April", "total": 6000 },
+        { "month": "May", "total": 9000 }
+      ];
       this.filteredDataSales = [...this.originalDataSales];
-    });
-    this.dashboard.getRevenueData().subscribe((data)=>{
-      this.originalDataRevenue = data.revenue;
+  
+      this.originalDataRevenue = [
+        { "date": "2024-11-01", "revenue": 15000 },
+        { "date": "2024-11-02", "revenue": 17000 },
+        { "date": "2024-11-03", "revenue": 16000 },
+        { "date": "2024-11-04", "revenue": 18000 }
+      ];
       this.filteredDataRevenue = [...this.originalDataRevenue];
-    });
-    this.dashboard.getCustomerInsights().subscribe((data)=>{
-      this.originalDataCustomers = data.customers;
+  
+      this.originalDataCustomers = [
+        { "region": "North", "count": 120 },
+        { "region": "South", "count": 80 },
+        { "region": "East", "count": 100 },
+        { "region": "West", "count": 90 }
+      ]
       this.filteredDataCustomers = [...this.originalDataCustomers];
-    });
-    this.dashboard.getInventoryData().subscribe((data)=>{
-      this.originalDataInventory = data.inventory;
+  
+      this.originalDataInventory =[
+        { "product": "Product A", "quantity": 50, "status": "In Stock" },
+        { "product": "Product B", "quantity": 0, "status": "Out of Stock" },
+        { "product": "Product C", "quantity": 20, "status": "Low Stock" },
+        { "product": "Product D", "quantity": 100, "status": "In Stock" }
+      ];
       this.filteredDataInventory = [...this.originalDataInventory];
-    });
+  
   }
 
   // Handle filter changes
