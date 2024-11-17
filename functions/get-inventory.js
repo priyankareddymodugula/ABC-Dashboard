@@ -5,9 +5,15 @@ exports.handler = async function(event, context) {
       { "product": "Product C", "quantity": 20, "status": "Low Stock" },
       { "product": "Product D", "quantity": 100, "status": "In Stock" }
     ];
+    const headers = {
+      "Access-Control-Allow-Origin": "*", // Allows all origins
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS", // Allowed methods
+      "Access-Control-Allow-Headers": "Content-Type", // Allowed headers
+    };
   
     return {
       statusCode: 200,
+      headers: headers,
       body: JSON.stringify({ inventory: inventoryData })
     };
   };
